@@ -15,6 +15,7 @@ const Expenses = (props) => {
               amount={value.amount}
               date={value.date}
               locationOfExpenditure={value.locationOfExpenditure}
+              id = {value.id}
             />
           );
         })}
