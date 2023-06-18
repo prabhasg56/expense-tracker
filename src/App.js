@@ -1,5 +1,5 @@
 import Expenses from "./components/Expenses/Expenses";
-import ExpenseForm from "./components/Expenses/ExpenseForm";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 const App = () => {
   const expenses = [
@@ -40,9 +40,17 @@ const App = () => {
     },
   ];
 
+  const enteredExpense = (enteredExpenseData) => {
+    const enteredExpense = {
+      ...enteredExpenseData,
+    };
+    
+    console.log(enteredExpense);
+  };
+
   return (
     <div>
-      <ExpenseForm />
+      <NewExpense onSaveExpenseData={enteredExpense} />
       <Expenses items={expenses} />
     </div>
   );
