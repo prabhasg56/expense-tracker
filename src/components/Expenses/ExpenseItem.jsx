@@ -28,7 +28,7 @@ const ExpenseItem = ({ date, title, amount, locationOfExpenditure, id }) => {
         >
           Change Exp
         </button>
-        <div className="expense-item__price">{locationOfExpenditure}</div>
+        {/* <div className="expense-item__price">{locationOfExpenditure}</div> */}
         <button
           onClick={deleteExpense}
           className="expense-item__price"

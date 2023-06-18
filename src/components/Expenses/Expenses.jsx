@@ -6,7 +6,7 @@ import "./Expenses.css";
 
 const Expenses = (props) => {
   return (
-    <div style={{ display: "flex", backgroundColor: "#4b4b4b" }}>
+    <div style={{ display: "flex", backgroundColor: "#4b4b4b", width:'100%', height: '100%'}}>
       <Card className="expenses">
         {props.items.map((value, key) => {
           return (
