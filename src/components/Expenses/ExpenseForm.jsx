@@ -21,8 +21,20 @@ const ExpenseForm = () => {
     setEnteredAmount(amount);
   };
 
+  const formSubmitted = (e) => {
+    e.preventDefault();
+
+    const expenseObj = {
+      title: enteredTitle,
+      date: enteredDate,
+      amount: enteredAmount
+    }
+
+    console.log(expenseObj);
+  }
+
   return (
-    <form>
+    <form onSubmit={formSubmitted}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
@@ -30,7 +42,7 @@ const ExpenseForm = () => {
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
-          <input type="number" min="0.01" max="0.01" onChange={addAmount} />
+          <input type="number" onChange={addAmount} />
         </div>
         <div className="new-expense__control">
           <label>Date</label>
@@ -42,7 +54,7 @@ const ExpenseForm = () => {
           />
         </div>
         <div className="btn">
-          <button className="expense_add_btn">Add Expense</button>
+          <button type="submit" className="expense_add_btn" >Add Expense</button>
         </div>
       </div>
     </form>
