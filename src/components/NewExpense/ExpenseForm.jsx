@@ -12,7 +12,7 @@ const ExpenseForm = (props) => {
   };
 
   const addDate = (e) => {
-    const date = e.target.value;
+    const date = new Date(e.target.value);
     setEnteredDate(date);
   };
 
@@ -26,8 +26,8 @@ const ExpenseForm = (props) => {
 
     const expenseObj = {
       title: enteredTitle,
-      date: enteredDate,
       amount: enteredAmount,
+      date: enteredDate,
     };
 
     setEnteredAmount("");
