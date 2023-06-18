@@ -49,7 +49,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: 'column', backgroundColor: "#4b4b4b", width:'100%', height: '100%'}}>
       <NewExpense onSaveExpenseData={enteredExpense} />
       <Expenses items={expenses} />
     </div>
