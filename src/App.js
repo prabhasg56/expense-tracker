@@ -38,6 +38,13 @@ const DUMMY_EXPENSES = [
     date: new Date(2023, 5, 20),
     locationOfExpenditure: "India",
   },
+  {
+    id: "e6",
+    title: "Car",
+    amount: 1000,
+    date: new Date(2023, 6, 20),
+    locationOfExpenditure: "India",
+  },
 ];
 
 const App = () => {
