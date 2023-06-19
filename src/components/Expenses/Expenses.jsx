@@ -21,6 +21,7 @@ const Expenses = (props) => {
   });
 
   let expensesContent = <p style={{textAlign:'center', color:'white', fontWeight:'bold', fontSize: 20}}>No expenses found!</p>
+ 
   const addMoreItems = (filteredExpenses.length === 1)? <p style={{textAlign:'center', color:'white', fontWeight:'bold', fontSize: 20}}>Only single Expense here. Please add more...</p> : ""
 
   if(filteredExpenses.length > 0) {

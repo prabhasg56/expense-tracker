@@ -5,6 +5,7 @@ const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+  const [formDis, setFormDis] = useState(false);
 
   const addTitle = (e) => {
     const title = e.target.value;
@@ -12,7 +13,7 @@ const ExpenseForm = (props) => {
   };
 
   const addDate = (e) => {
-    const date = new Date(e.target.value);
+    const date = e.target.value;
     setEnteredDate(date);
   };
 
@@ -24,42 +25,73 @@ const ExpenseForm = (props) => {
   const formSubmitted = (e) => {
     e.preventDefault();
 
-    const expenseObj = {
-      title: enteredTitle,
-      amount: enteredAmount,
-      date: enteredDate,
-    };
+    if (formDis) {
+      const expenseObj = {
+        title: enteredTitle,
+        amount: enteredAmount,
+        date: new Date(enteredDate),
+      };
 
-    setEnteredAmount("");
-    setEnteredDate("");
-    setEnteredTitle("");
+      setEnteredAmount("");
+      setEnteredDate("");
+      setEnteredTitle("");
 
-    props.onSaveExpnseData(expenseObj);
+      props.onSaveExpnseData(expenseObj);
+      setFormDis(false);
+    } else {
+      setFormDis(true);
+    }
+  };
+
+  const onCancelHandler = (e) => {
+    e.preventDefault();
+    setFormDis(false);
   };
 
   return (
     <form onSubmit={formSubmitted}>
       <div className="new-expense__controls">
-        <div className="new-expense__control">
-          <label>Title</label>
-          <input type="text" value={enteredTitle} onChange={addTitle} />
-        </div>
-        <div className="new-expense__control">
-          <label>Amount</label>
-          <input type="number" value={enteredAmount} onChange={addAmount} />
-        </div>
-        <div className="new-expense__control">
-          <label>Date</label>
-          <input
-            type="date"
-            value={enteredDate}
-            min="2023-06-18"
-            max="2030-06-19"
-            onChange={addDate}
-          />
-        </div>
+        {formDis && (
+          <>
+            <div className="new-expense__control">
+              <label>Title</label>
+              <input
+                type="text"
+                required
+                value={enteredTitle}
+                onChange={addTitle}
+              />
+            </div>
+            <div className="new-expense__control">
+              <label>Amount</label>
+              <input
+                type="number"
+                required
+                value={enteredAmount}
+                onChange={addAmount}
+              />
+            </div>
+            <div className="new-expense__control">
+              <label>Date</label>
+              <input
+                type="date"
+                value={enteredDate}
+                min="2023-01-01"
+                max="2025-12-31"
+                onChange={addDate}
+              />
+            </div>
+          </>
+        )}
+
         <div className="btn">
-          <button type="submit" style={{backgroundColor:'darkgreen'}} >
+          {formDis && <button
+            onClick={onCancelHandler}
+            style={{ backgroundColor: "darkred" }}
+          >
+            Cancel
+          </button>}
+          <button type="submit" style={{ backgroundColor: "darkgreen" }}>
             Add Expense
           </button>
         </div>
