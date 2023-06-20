@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
+import './App.css'
 
 const DUMMY_EXPENSES = [
   {
@@ -42,7 +43,7 @@ const DUMMY_EXPENSES = [
     id: "e6",
     title: "Car",
     amount: 1000,
-    date: new Date(2023, 6, 20),
+    date: new Date(2022, 6, 20),
     locationOfExpenditure: "India",
   },
 ];
@@ -52,21 +53,13 @@ const App = () => {
 
   const enteredExpense = (enteredExpenseData) => {
     setExpenses((prevExpense) => {
-      console.log(enteredExpenseData)
+      console.log(enteredExpenseData);
       return [enteredExpenseData, ...prevExpense];
     });
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        backgroundColor: "#4b4b4b",
-        width: "100%",
-        height: "100%",
-      }}
-    >
+    <div className="body" >
       <NewExpense onSaveExpenseData={enteredExpense} />
       <Expenses items={expenses} />
     </div>
